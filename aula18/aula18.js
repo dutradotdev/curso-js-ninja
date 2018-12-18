@@ -18,7 +18,7 @@
   */
   console.log( 'Limpando CPFs:' );
   function cleanCPF(cpf) {
-    return cpf.replace(/[^\d]/g, '');
+    return cpf.replace(/[^\d]/g, ''); // ou /\D/g
   }
   console.log(cleanCPF("049-214 3421-1")) //04921434211
   console.log(cleanCPF("210.458.522-05")) //21045852205
@@ -38,6 +38,8 @@
   console.log('21045852205'.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, formatCpf));
   console.log('73550079422'.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, formatCpf));
   console.log('10112313132'.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, formatCpf));
+  // ou...
+  console.log('10112313132'.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'));
 
   /*
   Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
@@ -53,6 +55,7 @@
   var frase = "Os meses de janeiro, junho e julho começam com a letra j.";
   console.log( '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":' );
   console.log(frase.match(/ju\w{3}/g))
+  console.log(frase.match(/ju[nl]ho/g))
   console.log(frase.match(/ju(nho|lho)/g))
 
   /*
@@ -99,10 +102,11 @@
   corretas, para depois aplicar no código ;)
   */
  function formatHtml(captura, abertura, texto, fechamento) {
-  return (`${abertura}O texto dentro da tag "${abertura.replace(/[<>]/g,'')}" é "${texto}"${fechamento}\n`);
+  return (`<${abertura}>O texto dentro da tag "${abertura}" é "${texto}"${fechamento}\n`);
  }
  var marcacao = "<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>";
 
  console.log( '\nFazer replace dos textos das tags:' );
- console.log(marcacao.replace(/(<\w+>)([^<]+)(<\/\w+>)/g, formatHtml))
+ console.log(marcacao.replace(/<(\w+)>([^<]+)(<\/\w+>)/g, formatHtml))
+ console.log(marcacao.replace(/<(\w+)>([^<]+)(<\/\w+>)/g, `<$1>O texto dentro da tag "$1" é "$2" $3\n`))
 }());

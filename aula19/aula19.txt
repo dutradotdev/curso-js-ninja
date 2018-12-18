@@ -1,0 +1,47 @@
+Continuacao regex...:
+- ^: início de string. Dentro de uma lista, o ^ é uma negacao mas fora é o início de uma string. Ex:
+/^<p>/ -> verifica se tem um <p> no inicio da string.
+- $: fim de string. Provavelmente é a última coisa que você vai adicionar no seu regex. Ex:
+/$>/ -> verifica se a string termina com ">".
+-?: Repeticao nao gulosa CASO seja seguido de um repetidor. Exemplo:
+
+texto = "<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>";
+
+/<(\w+)>.+(<\/\w+>)/g no texto pega da primeira abertura ate a ultima. é uma busca gulosa. só é reconhecido
+um match. Ele para apenas no último </.
+se eu uso:
+/<(\w+)>.+?(<\/\w+>)/g no texto, ele faz uma busca não gulosa e para no primeiro </ que ele encontrar.
+
+-?: : o "?:" não faz a captura do grupo, só o match. Ex:
+texto = "junho e julho"
+/ju(n|l)ho/g -> o agrupamento irá retornar 'n' e 'l'... pra que preciso disso?
+/ju(?:n|l)ho/g -> não agrupa =)
+
+
+Flag:
+-m: multiline. Ela é útil para verificar coisas linha a linha, ex:
+/^</gm -> vejo se todas as linhas comecam com <
+
+-\1 \2 -> referencia a captura dentro do regex. Ex:
+quero garantir que a abertura de uma tag HTML é a mesma de fechamento nesse regex:
+/<(\w+)>.+(<\/\w+>)/g
+
+como fazer?
+/<(\w+)>.+<\/(\1)>/g
+aí eu garanto que ele pega até o fechamento da abertura da primeira tag:
+<h1> eehaueiuaheuihaueih </h1>
+
+
+Conseguimos usar o regex em:
+string.match(); -> retorna um array com todos os matches
+string.replace();
+string.split(); -> '111.222.333-44'.split(/\D/g);
+string.search(); -> '111.222.333-44'.search(/\./g);
+
+O construtor RegExp():
+- Duas barras \\ escapam as coisas dentro do construtor:
+var regexp = new RegExp('\\d'); // /\d/
+
+Métodos:
+regexp.test(str) -> retorna true ou false caso dê match
+regexp.exec(str) -> fica "iterando" e a cada execucao ele retorna o index do match na string. caso nao tenha mais ele retorna null.

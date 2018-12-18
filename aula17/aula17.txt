@@ -9,7 +9,7 @@
     -\w: Casa caracteres alfanuméricos ("_" incluso). A expressão "/\w/" retorna a primeira letra encontrada na string. Cada \w é um caracter.
     -\d: Casa números. A expressão "/\d/" retorna o primeiro número encontrado na string. Cada \d é um caracter.
     -|: Significa "ou". "/a|b/" retorna um único match que é a ou b.
-    -[]: Colchetes representam classes de caracteres. [aeiou] retorna a ou e ou i ou o ou u. Corresponde a um dos elementos que estiverem dentro.
+    -[]: Colchetes representam classes de caracteres. [aeiou] retorna a ou e ou i ou o ou u. Corresponde a um dos elementos que estiverem dentro. Dentro da lista, qualquer caracter especial de regex é apenas um caracter comum. cuidado.
     -(): Agrupamento de caracteres. Tem que ocorrer fora da lista(classe de caracteres). "/(1875)/" retorna 1875.
          "/(2002)|(lucas)/g" retorna todos 2002 ou lucas do texto.
     -Sequencias de caract: [0-9], [a-z], [A-Z], [a-zA-Z0-9]. O intervalo representado pelo "-" é o intervalo
