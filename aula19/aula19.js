@@ -83,7 +83,16 @@
   qualquer classe que for testada. Os dados passados no exercício são somente
   para exemplificar.
   */
+  function hasClass(markup, cssClass) {
+    let regexp = new RegExp(`class=["']([${cssClass}]\\s?)|(\s\S)+["']`, 'g');
+    let hasCssClass = markup.match(regexp);
+    return `${hasCssClass ? 'true' : 'false'} para classe ${cssClass}`;
+  }
   var markup = '<main>\n  <div class="container">\n    <span class="text date"></span>\n    <p class=\'excerpt\'></p>\n  </div>\n</main>';
   console.log( '\nQuais classes CSS existem na marcação abaixo?\n\n', markup, '\n' );
-  // ?
+  console.log(hasClass(markup, "container"))
+  console.log(hasClass(markup, "text"))
+  console.log(hasClass(markup, "date"))
+  console.log(hasClass(markup, "excerpt"))
+  console.log(hasClass(markup, "main"))
 }());
