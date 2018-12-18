@@ -1,0 +1,58 @@
+Array é um tipo de dado que herda de Object.
+Arrays são um tipo de dado em JavaScript que herda de Object, por isso ele contém métodos e propriedades,
+inclusive a propriedade especial `length` que é conta a quantidade de itens no array. Veja que a sintaxe para "pegar"
+um valor em um array é o mesmo que usado em objetos, quando você não tem o nome da propriedade, ou o nome não é válido
+segundo a regra de criação de nomes para variáveis, então você pega o valor usando os colchetes =).
+
+E sim, funções funcionam exatamente como os objetos, com a diferença que com elas, além de fazer tudo o
+que você faz com objetos, você ainda pode "invocá-las", e assim obter qualquer tipo de valor delas, que foi retornado
+usando a palavra chave "return" =).
+
+um toString() em um objeto retorna:
+[object Object];
+
+O arr.toString() converte todo mundo em uma string, junta tudo em uma string
+e separa todos os elementos por vírgula
+
+O método concat() insere um novo elemento no final do array e gera um novo array pra você
+não alterando o primeiro array. O metodo push() faz isso tbm mas não gera outro array;
+
+Se eu passar um array no concat(), ele não insere todo o array de uma vez, ele insere valor por valor:
+var arr = [1,2,3]
+arr.concat([1,2,3]) //(6) [1, 2, 3, 1, 2, 3]
+Ele não quebra arrays multidimensionais.
+
+Método unshift(): Adiciona um elemento no comeco do array e retorna o length.
+Método shift(): Remove um elemento no comeco do array e retorna o length.
+
+Método slice():
+- Ele corta o array de um índice ate o outro.
+- Ele espera receber dois índices como parâmetros.
+- O primeiro parametro é onde ele comeca e é includente
+- O segundo é onde ele termina e  excludente (ele só vai ate esse parametro mas nao processa este parametro)
+Exemplo: arr.slice(0, 2) -> ele vai processar do índice 0 até 1.
+- Ele pode receber parâmetro negativo para pegar os últimos números.
+Exemplo: arr.slice(-2)
+- Não modifica o array principal. Retorna um novo array.
+
+Método splice():
+- Modifica o array principal.
+- Pode remover ou adicionar elementos.
+Exemplo: arr.splice(3) -> remove os 3 primeiros índices do array.
+Exemplo: arr.splice(1, 3) -> á partir do indice 1 (includente), remova 3 numeros.
+Exemplo: arr.splice(1, 0, 'a') -> á partir do indice 1, quero remover 0 elementos e adicionar a letra 'a'
+Exemplo: arr.splice(1, 3, 'lucas') -> á partir do indice 1 (includente), remova 3 numeros e adiciona lucas
+
+Método every():
+- Retorna sempre true ou false;
+- Você passa uma condicao pro every. Caso seja verdadeiro para todos os elementos, ele retorna true.
+Caso seja falso, false. Exemplo:
+var arr = [1, 2, 3, 4, 5, 6, 7];
+var isTrue = arr.every(item => item % 2 === 0); //false
+
+Método some():
+- Retorna sempre true ou false;
+- Você passa uma condicao pro every. Caso seja verdadeiro para um dos elementos, ele retorna true.
+Caso seja falso, false. Exemplo:
+var arr = [1, 2, 3, 4, 5, 6, 7];
+var isTrue = arr.some(item => item % 2 === 0); //true

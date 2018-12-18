@@ -1,0 +1,6 @@
+O operador unário + tenta converter o que está entre aspas para Number ou NaN.
+
+Sempre que eu somo uma string com um número, o js entende que eu quero fazer uma concatenacao.
+ 
+null precisa ser explicitamente declarado, já se vc n passar valor pra um parametro
+ou variavel ela fica undefined

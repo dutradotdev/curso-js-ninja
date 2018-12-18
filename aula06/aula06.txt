@@ -1,0 +1,8 @@
+O operador , existe para mostrar precedencia de acoes, ex:
+
+function teste() {
+  let x = 0;
+  return (x +=1, x); //equals ++x
+}
+
+O switch case faz usa um strict equals para analisar os cases

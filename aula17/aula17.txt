@@ -1,0 +1,32 @@
+- Expressões regualares é um tipo primitivo.
+- Entre as barras é a expressao regular, do lado direito nós colocamos as flags.
+- Flags:
+  - g: global (em todo texto).
+  - i: ignore Case Sensitive.
+- Objeto RegExp():
+  - Strings tem um método chamado match que espera receber um regExp e retorna um array com os matchs encontrados. Retorna null caso não encontre nada.
+  Termos:
+    -\w: Casa caracteres alfanuméricos ("_" incluso). A expressão "/\w/" retorna a primeira letra encontrada na string. Cada \w é um caracter.
+    -\d: Casa números. A expressão "/\d/" retorna o primeiro número encontrado na string. Cada \d é um caracter.
+    -|: Significa "ou". "/a|b/" retorna um único match que é a ou b.
+    -[]: Colchetes representam classes de caracteres. [aeiou] retorna a ou e ou i ou o ou u. Corresponde a um dos elementos que estiverem dentro.
+    -(): Agrupamento de caracteres. Tem que ocorrer fora da lista(classe de caracteres). "/(1875)/" retorna 1875.
+         "/(2002)|(lucas)/g" retorna todos 2002 ou lucas do texto.
+    -Sequencias de caract: [0-9], [a-z], [A-Z], [a-zA-Z0-9]. O intervalo representado pelo "-" é o intervalo
+    entre caracteres existente na tabela unicode.
+    -\: Escape de caracteres. Eu quero casar o "-", mas o "-" representa um intervalo. Como faco para ele representar o hífen?
+    é só escapá-lo acrescentando um \ antes do "-".
+    -Agrupamento de capturas: No replace, quando uso agrupamento (()) o js cria umas """variáveis""" pra gente.
+    Exemplo: str.replace(/(de)/g, "--$1--")
+    Neste exemplo, ele não vai fazer o replace por $1... o $1 representa o primeiro grupo de captura ((de)). Logo, ele subs-
+    tituirá por --de--.
+    O $& pega todas as capturas juntas. Exemplo:
+    str.replace(/(d)(e)/g, "--$&--") -> replacear por --de--
+    -E se eu quiser replacear todas os ocorrencias por elas mesmas só que maiúsculas? A funcao replace() pode receber
+    o segundo argumento como uma funcao:
+
+    texto.replace(/(d)(e)/g, function(capturaTotal, d, e) {
+    	return (d + e).toUpperCase();
+    });
+
+    retornará de maiúsculo.

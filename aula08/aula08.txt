@@ -1,0 +1,70 @@
+Boas práticas na criacao de funcoes:
+
+sempre prefira isso:
+var func = function func() {
+
+}
+
+func.name // retorna func
+
+a isso:
+
+var func = function() {
+
+}
+
+func.name // retorna ''
+
+Por que? Facilita o debug porque a funcao é nomeada
+
+---------------------------
+Programacao funcional é uma forma de programar usando funcoes
+Para programar funcionalmente, a linguagem precisa disponibilizar algumas coisas (que o js já disponibiliza):
+- Objetos (cidadaos) de primeira classe: Função tem o mesmo tratamento de objetos. Tudo o que
+você faz com objetos você faz com funções.
+- Você pode criar objetos e funções literais.
+- Você pode atribuir funções e objetos para variáveis.
+- Você pode retornar funções e objetos de funções.
+
+function adder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+ou
+
+function sum(x) {
+  function sumAnother(y) {
+    return x + y;
+  }
+  return sumAnother;
+}
+
+executando...
+var add2 = adder(2)
+add2(3) //5
+ou...
+adder(2)(3) //5
+Explicando: adder(2) retorna uma função... e, como é uma função eu já posso executá-la passando
+o parâmetro que eu quero
+
+function adder(x) {
+  return function(y) {
+    return function(z) {
+      return x + y + z;
+    };
+  };
+}
+
+adder(2)(3)(10);
+
+Posso passar funções por parametro:
+
+function show(func) {
+  return func();
+}
+
+show(function() {
+  return 'show works!'
+});

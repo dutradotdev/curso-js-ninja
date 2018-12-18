@@ -1,0 +1,90 @@
+Objetos são mutáveis e são passados por referência:
+var obj1 = { valor: 'teste' };
+var obj2 = { valor: 'teste' };
+
+obj1 === obj2  //retorna false
+
+Retornou false porque são dois objetos diferentes na memória.
+Agora, se eu criar:
+var obj1 = { valor: 'teste' };
+var objCopy = obj1;
+
+objCopy === obj1 //return true
+
+Retornou true porque os dois objetos olham a mesma referência na memória,
+logo, são iguais.
+
+se eu adicionar/deletar/modificar uma propriedade de objCopy:
+objCopy.teste = true;
+essa propriedade fica disponível também em obj1 porque ambos olham a mesma referência(endereco de memória, no caso).
+
+
+Criacao de objetos:
+ - Literais (obj = {}).
+ - Com construtor (new Object()).
+ - com Object.create().
+
+Objetos tem uma propriedade chamada prototype que é um protótipo do objeto que está
+sendo criado.
+Cada objeto que é criado ele herda do seu próprio protótipo.
+
+Array, Date, RegExp, String... Todos eles herdam do Object.prototype.
+Object.prototype não herda de Object.prototype.
+Isso é chamado de encadeamento de protótipos (prototype chain).
+
+Object.create():
+Se eu fizer isso:
+var obj1 = { valor: 'teste' };
+var objCopy = obj1;
+
+o objeto objCopy tem se refere a obj1. Se eu mudar as propriedades em objCopy irá refletir em obj1.
+Caso eu queira evitar este comportamento, posso criar usando Object.create():
+var obj = { x: 1, y: 5, k: 'teste', l: false };
+var o2 = Object.create(obj);
+
+o2 irá herdar propriedades e métodos de obj. Caso eu mude algo em o2 não irá afetar o pai.
+Isso é uma heranca simples.
+No filho, posso sobrescrever propriedades e métodos.
+e posso continuar var o3 = Object.create(o2);
+e, como estou herdando prototypes mas criando objetos diferentes
+obj === o2 sempre resultará em false.
+
+se eu fizer:
+for(let prop in o2) {
+  console.log(prop)
+}
+
+ele vai imprimir as 4 propriedades. Mas... são propriedades herdadas do Objeto pai
+e não específicas do o2. E se eu quiser saber as propriedades específicas do o2 que são de o2
+e que não são herdadas de obj?
+É só usar o método hasOwnProperty() que retorna um booleano te avisando se é ou não dele mesmo.
+
+for(let prop in o2) {
+  console.log(prop, 'é minha propriedade?', o2.hasOwnProperty(prop))
+}
+
+Se você sobrescrever a propriedade que herdou do pai, você perde a referência dela.
+Mas, caso você delete, você volta a referenciar o pai.
+Basicamente, ele fica cavucando as prototypes como se fosse uma lista encadeada.
+quando a prototype === null então ele vê que acabou as prototypes e dá um undefined.
+
+Object.keys(obj) retorna um array com todas as propriedades não herdadas do objeto
+Object.keys(obj).length retorna quantidade de propriedades de um objeto
+
+
+var obj = { x: 1, y: 5, k: 'teste', l: false };
+var obj2 = Object.create(obj);
+
+
+obj.isPrototypeOf(obj2) -> "obj é um protótipo do obj2? Ou seja, ele foi herdado para o obj2? obj2 herda de obj?" //true
+
+
+Arrays:
+arr.push() -> insere no final
+arr.pop() -> retira do final
+arr.join() -> junta itens do array por um delimitador. Transforma em uma string
+var arr = [1,2,3]
+arr.join() //"1,2,3"
+
+arr.reverse() -> inverte os itens do array. Modifica os itens do array ao qual
+vc está aplicando o método

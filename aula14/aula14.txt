@@ -1,0 +1,32 @@
+Método reduce():
+- Não modifica o array principal e nem retorna o array.
+- Recebe dois parâmetros. Uma funcão de reducão e um número inicial pra reducão. Exemplo:
+arr.reduce(function() {}, 0);
+- Na function, existem 4 parametros que podem ser passados:
+  - acc (valor acumulado);
+  - item;
+  - index;
+  - próprio array;
+Exemplo de chamada:
+var arr = [1,2,3,4,5];
+var reduceNome = arr.reduce((ac, item, index, arr) => ac + item, 0)
+- Útil para fazer uma reducao dos itens do array
+
+Método reduceRigth():
+- Faz o mesmo só que da direita para esquerda
+var nome = ['l','u','c','a','s'];
+nome.reduceRight((ac, item, index, arr) => ac + item, ''); //sacul
+
+Método indexOf():
+- Procura um dado num array da esquerda pra direita e retorna sua o index da sua primeira aparicao.
+Caso nao haja nada ele retorna -1.
+- Ele pode receber mais um parametro informando a partir de qual indice você quer pesquisar no array.
+
+Método lastIndexOf():
+- Procura um dado num array da direita pra esquerda e retorna sua o index da sua primeira aparicao.
+Caso nao haja nada ele retorna -1.
+- Ele pode receber mais um parametro informando a partir de qual indice você quer pesquisar no array.
+
+Array.isArray():
+- verifica se o parametro passado eh array.
+

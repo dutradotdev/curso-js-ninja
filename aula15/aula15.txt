@@ -1,0 +1,38 @@
+O certo é colocar os scripts no final do body
+
+Sempre usar IIFE nos arquivos JS pra não ter problema com escopo global e local.
+
+This:
+- o this em métodos de objeto sempre faz referência ao próprio objeto.
+
+This em funcoes. Pode ter 2 valores:
+- referência ao objeto global (window)
+    Sempre que você tem uma funcao e ela não está dentro de algum
+    objeto, o this aponta para o objeto global.
+- referência ao objeto instanciado
+    O new Object() cria uma nova referência de objeto na memória
+
+function MyConstructor() {
+  this.prop1 = 'prop1';
+  this.prop2 = 'prop2';
+}
+var constructor = new MyConstructor();
+console.log('MyConstructor', constructor);
+
+Aqui eu tô instanciando MyConstructor e as propriedades penduradas
+no this dentro de MyConstructor fazer referencia a constructor
+e não a window.
+
+Agora... se eu chamar desse jeito (sem o new):
+var constructor = MyConstructor();
+console.log('MyConstructor', constructor);
+
+O js pendura as propriedades em window,
+ele não reconhece que é uma instância e tudo vai para o escopo
+global.. por isso, cuidado =)
+
+
+Arguments:
+- Arguments é um objeto array-like.
+- Nunca coloque um parametro a ser recebido como "arguments"
+pq ai ele sobrescreve o verdadeiro arguments

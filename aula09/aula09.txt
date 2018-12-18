@@ -1,0 +1,99 @@
+Closure é uma funcao que consegue acessar parâmetros externos a ela.
+
+function myFunction() {
+  var n1 = 10;
+  var n2 = 20;
+
+  function sum() {
+    //n1 e n2 estão disponíveis aqui
+    return n1 + n2;
+  }
+  return sum();
+}
+
+Hoisting:
+Por que o código abaixo funciona?
+function myFunction() {
+  var n1 = 10;
+  var n2 = 20;
+
+  return sum();
+  function sum() {
+    //n1 e n2 estão disponíveis aqui
+    return n1 + n2;
+  }
+}
+
+Por causa do Hoisting. A funcao literal (sum) declarada vai pra cima, uma linha abaixo do myFunction().
+Mas só funciona para funcao literal, funcao atribuida para varivel não funciona.
+
+function myFunction() {
+  var n1 = 10;
+  var n2 = 20;
+
+  return sum();
+  var sum = function sum() {
+    //error undefined is not a function
+    return n1 + n2;
+  }
+}
+
+com Hoisting isso vira:
+function myFunction() {
+  var n1 = 10;
+  var n2 = 20;
+  var sum = undefined;
+  return sum();
+  sum = function sum() {
+    ...
+  }
+}
+
+Outro exemplo:
+function teste() {
+  console.log('antes', n1);
+  var n1 = 10;
+  console.log('depois', n1);
+}
+
+Por que a funcao teste ao ser executada mostra o "antes" undefined e não dá erro?
+Porque o Hoisting joga a declaracao da variavel pra cima e só dá um valor no
+momento em que o usuário atribuiu um valor, ou seja:
+
+function teste() {
+  var n1;
+  console.log('antes', n1);
+  n1 = 10;
+  console.log('depois', n1);
+}
+
+Ou seja, declare variáveis no topo das funcoes sempre que possível.
+Retorne algo consistente.
+Funcoes literais depois de return funcionam, mas nao faca isso.
+
+IIFE - Immediately-invoked function expression (funcao auto-executável):
+Vantagem: Você cria/forca um escopo local e você evita o escopo global e
+quanto o menor o escopo global, melhor!
+
+No javascript, não há uma forma de invocar uma funcao anônima:
+// não roda!!
+function() {
+  return 1 + 2;
+}
+
+Para executar a funcao acima, preciso transformar ela em uma expressão.
+Para isso, envolvo ela com ():
+(function() {
+  return 1 + 2;
+})
+
+E depois eu executo:
+(function() {
+  return 1 + 2;
+})();
+
+ou
+
+(function() {
+  return 1 + 2;
+}());

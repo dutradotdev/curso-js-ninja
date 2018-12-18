@@ -1,0 +1,39 @@
+Wrapper Objects:
+Valores primitivos não são objetos.
+Um objeto dentro do js sempre tem propriedades e métodos.
+Mas... vamos analisar:
+var nome = 'Lucas';
+nome.length // 5
+nome nesse caso tem propriedade... por que?
+
+Por causa dos construtores.
+Quando eu faco:
+var nome = 'Lucas';
+por baixo dos panos o js faz
+var nome = new String('Lucas');
+Isso faz com que os métodos que estão no prototype do construtor "String" estejam disponíveis para serem usados no seu valor primitivo, como o "length", por exemplo
+
+quando eu crio um:
+var nome = 'Lucas';
+e quero acessar o nome.length, o js coloca o valor da minha variável num
+Wrapper e disponibiliza pra mim as propriedades e métodos desse tipo
+
+Quando você usa sem a palavra new, serve como conversor de valor:
+var nome = String(30);
+
+Qualquer coisa somada com uma string será concatenada
+
+Como testar o tipos de valores?
+com o typeof:
+typeof undefined // undefined
+typeof 1 // number
+typeof function(){} // function
+typeof 'oi' // string
+typeof NaN // number
+
+qualquer objeto que não seja objeto ele retorna object
+typeof {} // object
+typeof [] // object
+typeof null // object -> erro na implementacao do js
+
+Confie no typeof para valores primitivos

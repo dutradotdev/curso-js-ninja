@@ -1,0 +1,28 @@
+Continuacao regex....
+ -\s: representa um espaco em branco.
+ -\n: representa uma quebra de linha.
+ -\t: representa uma tabulacao.
+ -.: representa qualquer caracter exceto quebra de linha.
+
+Negadores:
+  -^: qualquer coisa que não seja. Ex: [^abc] -> dê match com qualquer coisa que não seja a, b ou c.
+  Nesse caso, ele negou a lista.
+  -\W: qualquer caracter menos os alfanuméricos.
+  -\D: qualquer caracter menos os não dígitos.
+  -\S: qualquer caracter menos os espacos em branco.
+  -[\S\s]: dá match com qualquer caracter. (ou não espaco em branco ou espaco em branco).
+
+Repetidores:
+  -Intervalo: {n, m} -> item anterior ao menos n vezes e no máximo m vezes.
+  Ex: /\d{2,4}/ -> pegue numeros de comprimento no mínimo com 2 dígitos e no máximo com 4 digitos
+  Regex pro meu telefone: \(\d{2}\)\d{5}-\d{4}
+  -{n,}: item anterior n ou mais vezes. \w{1,} -> pega todas as palavras do texto.
+  -{n}: item anterior n vezes.
+  -?: 0 ou 1 aparicoes do item anterior. Exemplo:
+  \d\d? -> um numero seguido ou nao de outro numero {0, 1}
+  -+: uma ou mais ocorrencias do item anterior. /\w+/ -> pega todas as palavras do texto.
+  -*: o caracter anterior repetido 0 ou mais vezes.
+  -()?: com um () seguido de um ? eu consigo falar que o que está entre ()  é opcional.
+Validacao de alguns dominios: /https?:\/\/w+\.\w*\.\w+\.\w{0,2}/
+Validacao de e-mail: /\w+@\w+\.\w{2,3}(\.\w+)?/
+Validacao de querystring pegando os parametros por chave e valor: /[?&](\w+)=(\w+)/g

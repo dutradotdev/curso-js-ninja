@@ -1,0 +1,16 @@
+posso utilizar o for..in para verificar as propriedades de um objeto:
+var car = {
+  modelo: 'vectra',
+  cor: 'verde',
+  ano: 2018
+};
+
+for (let prop in car) {
+  console.log(prop);
+  console.log(car[prop]);
+}
+
+posso usar o in para verificar se o objeto tem uma propriedade:
+console.log('ano' in car);
+
+

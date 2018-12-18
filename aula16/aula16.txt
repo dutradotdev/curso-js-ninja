@@ -1,0 +1,37 @@
+'use strict':
+- Foi introduzido na ES5.
+- O use strict veio para resolver alguns problemas de escopo e etc.
+- Eu declaro o use strict onde eu quiser informar pro js que aquele escopo é um escopo restrito.
+- Tem que ser declarado no início da funcao.
+- É UMA BOA PRÁTICA USAR O 'use strict'; DENTRO DE UMA IIFE. Isso porque a sua app pode receber códigos de terceiros
+que não estão usando use strict ou testados no formato do ES5 e isso faz o código de terceiros quebrar e vc se fode
+- O use strict:
+  - Não deixa você criar uma variável sem uma palavra chave.
+  - Não permite o uso do with;
+    - O with é um operador que permite que você "enxute" as suas instrucoes para chamar uma propriedade de uma
+    objeto.
+    - O uso do with é desencorajado porque o que é declarado dentro do with pode alterar ou sobrescrever o que está fora
+    do with.
+  - Não permite o "instanciamento de objetos" sem o new para não pendurar propriedades no window (escopo global).
+  - Dentro do use strict, this (objeto global) === undefined.
+  - O operador delete lanca um SyntaxError caso a propriedade não puder ser deletada.
+  - Não pode declarar propriedades de um mesmo objeto com nomes iguais.
+  - Funcoes devem ter argumentos com nomes diferentes.
+
+Objeto String():
+Quando eu faco isso:
+'lucas'.length;
+o JS faz isso:
+var a = new String('lucas'); //wrapper object
+a.length
+
+charAt(x):
+- Diz qual é o char na posicao X
+
+split():
+- Quebra a string em um delimitador que eu passar
+
+join():
+- Junto a string em um delimitador que eu passar
+
+str.split().join() tem o efeito de replace all

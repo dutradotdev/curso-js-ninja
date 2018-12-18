@@ -1,0 +1,31 @@
+valores truthy são valores que booleanamente são true
+valores falsy são valores que booleanamente são false
+
+falsy:
+- undefined
+- null
+- NaN
+- 0
+- -0
+- ''
+- ""
+
+truthy:
+- todos os outros
+
+
+Como descobrir a representacao booleana de um valor:
+!!undefined
+!!null
+!!1
+!!2
+
+O javascript tem um garbage collector. Como funciona?
+Eu crio uma funcao que dentro dela tem suas variáveis locais.
+O interpretador interpreta (avá) todo o código e se ele ver que a partir de tal linha eu nao usarei mais a
+variável, ele elimina da memória.
+funciona com funcoes, variaveis, objetos.... o que ele n for usar ele elimina.
+
+
+Se eu não usar a palavra var, ele cria a variável globalmente e aí o garbage collector não funfa direito
+sobre ela
